@@ -5,7 +5,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { BsFillSuitHeartFill } from "react-icons/bs";
 import Logo from "../../assets/shop.png";
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 function NavBar() {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -17,13 +17,13 @@ function NavBar() {
       <div className=" bg-primary/30 py-2">
         <div className="container flex justify-between items-center ">
           <div>
-            <a
-              href="/"
-              className="font-bold text-2xl sm:text-3xl flex items-center gap-2"
+            <Link
+              to="/"
+              className="font-bold text-2xl sm:text-3xl flex items-center"
             >
               <img className="w-[50px]" src={Logo} alt="logo" />
-              UrbanTrends
-            </a>
+              <em>Urban</em>Trends
+            </Link>
           </div>
           <div
             className={`${
@@ -33,32 +33,50 @@ function NavBar() {
           >
             <ul className="flex flex-col md:flex-row  md:items-center md:gap-6 gap-8 ">
               <li>
-                <a className="hover:text-red-500 font-bold" href="/">
+                <Link
+                  className="hover:text-red-500 border-b border-blue-600 font-bold"
+                  to="/mens"
+                >
                   MENS
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="hover:text-red-500 font-bold" href="/">
+                <Link className="hover:text-red-500 font-bold" to="/womens">
                   WOMENS
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="hover:text-red-500 font-bold" href="/">
+                <Link className="hover:text-red-500 font-bold" to="/gadgets">
                   GADGETS
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="hover:text-red-500 font-bold" href="/">
+                <Link className="hover:text-red-500 font-bold" to="/jewellery">
                   JEWELLERY
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
           <div className="flex gap-6">
-            <BsFillSuitHeartFill size={30} className="hover:text-primary" />
-            <BsCartCheckFill size={30} className="hover:text-primary" />
-            <FaUserCircle size={30} className="hover:text-primary" />
+            <Link to="/wishlists">
+              <BsFillSuitHeartFill
+                size={30}
+                className="hover:text-primary cursor-pointer"
+              />
+            </Link>
+            <Link to="/cart">
+              <BsCartCheckFill
+                size={30}
+                className="hover:text-primary cursor-pointer"
+              />
+            </Link>
+            <Link to="/profile">
+              <FaUserCircle
+                size={30}
+                className="hover:text-primary cursor-pointer"
+              />
+            </Link>
           </div>
           <div className="md:hidden">
             {showMenu ? (

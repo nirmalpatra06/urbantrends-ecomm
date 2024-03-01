@@ -1,12 +1,29 @@
 /* eslint-disable react/prop-types */
 import { LuShoppingBag } from "react-icons/lu";
 import { BsFillSuitHeartFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard({ item }) {
-  let title = item.title;
+  const navigate = useNavigate();
+  const title = item.title;
+  const titleString = () => {
+    return String(title).toLowerCase().split(" ").join("");
+  };
+  const rootId = titleString(title);
+  // console.log(rootId);
 
+  function handleClick() {
+    navigate(`/product/${rootId}`, {
+      state: {
+        item: item,
+      },
+    });
+  }
   return (
-    <div className="border rounded-md shadow-md relative mb-8">
+    <div
+      onClick={handleClick}
+      className="border rounded-md shadow-md relative mb-8"
+    >
       <div className="group w-[280px] h-[280px] mb-32 cursor-pointer    rounded  ">
         <div className="h-full flex items-center justify-center  ">
           <img
@@ -23,7 +40,7 @@ function ProductCard({ item }) {
             <div>
               <h2>$ {item.price}</h2>
               <p>
-                {item.rating.rate}/5 ({item.rating.count})
+                {item.rating.rate}/5 ({item.rating.count}) ratings
               </p>
             </div>
             <LuShoppingBag
