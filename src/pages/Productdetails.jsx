@@ -1,9 +1,14 @@
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/urbanTrendsSlice";
+import { ToastContainer, toast } from "react-toastify";
 
 function Productdetails() {
+  const dispatch = useDispatch();
   const [details, setDetails] = useState({});
+  let [baseQty, setBaseQty] = useState(1);
   const location = useLocation();
   useEffect(() => {
     // console.log(location.state.item);
@@ -45,18 +50,40 @@ function Productdetails() {
             <p className="mb-8">{details.description}</p>
             <div className="flex gap-4 flex-col md:flex-row items-center">
               <div className="w-52 flex items-center justify-centery text-gray-500 gap-4 border p-3 rounded">
-                <p className="text-sm">Quantity</p>
+                <p className="text-sm">Quantity:</p>
                 <div className="flex items-center gap-4 text-sm font-semibold ">
-                  <button className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white duration-100 active:bg-black ">
+                  <button
+                    onClick={() =>
+                      setBaseQty(baseQty === 1 ? (baseQty = 1) : baseQty - 1)
+                    }
+                    className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white duration-100 active:bg-black "
+                  >
                     -
                   </button>
-                  <span>{3}</span>
-                  <button className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white duration-100 active:bg-black">
+                  <span>{baseQty}</span>
+                  <button
+                    onClick={() => setBaseQty(baseQty + 1)}
+                    className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white duration-100 active:bg-black"
+                  >
                     +
                   </button>
                 </div>
               </div>
-              <button className="bg-black py-4 px-8 text-white rounded-sm">
+              <button
+                onClick={() =>
+                  dispatch(
+                    addToCart({
+                      id: details.id,
+                      title: details.title,
+                      image: details.image,
+                      price: details.price,
+                      quantity: baseQty,
+                      description: details.description,
+                    })
+                  ) & toast.success(`${details.title} is added`)
+                }
+                className="bg-black py-4 px-8 text-white rounded-sm"
+              >
                 Add to Cart
               </button>
             </div>
@@ -67,6 +94,18 @@ function Productdetails() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </section>
   );
 }
