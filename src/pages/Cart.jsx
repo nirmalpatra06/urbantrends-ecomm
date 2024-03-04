@@ -1,12 +1,28 @@
 import { useDispatch, useSelector } from "react-redux";
 import { IoCloseSharp } from "react-icons/io5";
-import { deleteItem, resetCart } from "../redux/urbanTrendsSlice";
+import {
+  decrementQty,
+  deleteItem,
+  increamentQty,
+  resetCart,
+} from "../redux/urbanTrendsSlice";
 import { ToastContainer, toast } from "react-toastify";
+import { useEffect, useState } from "react";
 
 function Cart() {
   const productData = useSelector((state) => state.urbanTrends.productData);
   const dispatch = useDispatch();
   // console.log(productData);
+  const [totalAmount, setTotalAmount] = useState("");
+  useEffect(() => {
+    let price = 0;
+    productData.map((item) => {
+      price += item.price * item.quantity;
+      return price;
+    });
+    // console.log(price);
+    setTotalAmount(price.toFixed(2));
+  }, [productData]);
   return (
     <div className="container max-w-screen-xl mx-auto py-20 flex flex-col md:flex-row">
       <div className="w-2/3 pr-10">
@@ -29,19 +45,48 @@ function Cart() {
                 </div>
                 <div className="w-[250px] flex flex-col items-center justify-center gap-4">
                   <h2>{item.title}</h2>
-
+                  <p>{item.price}</p>
                   <div className="w-52 flex items-center justify-centery text-gray-500 gap-4 border p-3 rounded">
                     <p className="text-sm">Quantity:</p>
                     <div className="flex items-center gap-4 text-sm font-semibold ">
-                      <button className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white duration-100 active:bg-black ">
+                      <button
+                        onClick={() =>
+                          dispatch(
+                            decrementQty({
+                              id: item.id,
+                              title: item.title,
+                              image: item.image,
+                              price: item.price,
+                              quantity: 1,
+                              description: item.description,
+                            })
+                          )
+                        }
+                        className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white duration-100 active:bg-black "
+                      >
                         -
                       </button>
-                      <span>4</span>
-                      <button className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white duration-100 active:bg-black">
+                      <span>{item.quantity}</span>
+                      <button
+                        onClick={() =>
+                          dispatch(
+                            increamentQty({
+                              id: item.id,
+                              title: item.title,
+                              image: item.image,
+                              price: item.price,
+                              quantity: 1,
+                              description: item.description,
+                            })
+                          )
+                        }
+                        className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white duration-100 active:bg-black"
+                      >
                         +
                       </button>
                     </div>
                   </div>
+                  <p>{item.quantity * item.price}</p>
                 </div>
                 <IoCloseSharp
                   onClick={() =>
@@ -71,7 +116,7 @@ function Cart() {
         <div className="flex flex-col gap-6 border-b-[1px] border-b-gray-500 pb-6">
           <h2 className="text-2xl font-medium">Cart Total</h2>
           <p className="flex items-center gap-4 text-base">
-            Subtotal: <span>$200</span>
+            Subtotal: <span className="font-bold">$ {totalAmount}</span>
           </p>
           <p className="flex items-start gap-4 text-base">
             Shipping:
@@ -82,7 +127,7 @@ function Cart() {
           </p>
         </div>
         <p className="font-semibold flex justify-between mt-6">
-          Total: <span className="font-bold text-xl">$1000</span>
+          Total: <span className="font-bold text-xl">$ {totalAmount}</span>
         </p>
         <button className="text-base bg-black text-white w-full py-3 hover:bg-gray-800 duration-300">
           proceed to checkout

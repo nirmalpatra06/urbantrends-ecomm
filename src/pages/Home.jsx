@@ -14,11 +14,6 @@ function Home() {
     setProducts(data);
   }, [data]);
 
-  // const data = useLoaderData();
-  // console.log(data.data);
-  // useEffect(() => {
-  //   setProducts(data.data);
-  // }, [data]);
   return (
     <div>
       <Banner />

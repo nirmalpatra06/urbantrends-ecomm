@@ -51,18 +51,22 @@ const router = createBrowserRouter([
       {
         path: "/mens",
         element: <Mens />,
+        loader: productsData,
       },
       {
         path: "/womens",
         element: <Womens />,
+        loader: productsData,
       },
       {
         path: "/gadgets",
         element: <Gadgets />,
+        loader: productsData,
       },
       {
         path: "/jewellery",
         element: <Jewellery />,
+        loader: productsData,
       },
       {
         path: "/wishlists",

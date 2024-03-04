@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 function NavBar() {
   const [showMenu, setShowMenu] = useState(false);
   const productData = useSelector((state) => state.urbanTrends.productData);
-  console.log(productData);
+  // console.log(productData);
 
   function toggleShowMenu() {
     setShowMenu(!showMenu);
