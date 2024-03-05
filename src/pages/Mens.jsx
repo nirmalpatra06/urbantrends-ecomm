@@ -4,7 +4,7 @@ import { LuShoppingBag } from "react-icons/lu";
 import { ToastContainer, toast } from "react-toastify";
 import { BsFillSuitHeartFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/urbanTrendsSlice";
+import { addToCart, wishList } from "../redux/urbanTrendsSlice";
 import { useNavigate } from "react-router-dom";
 
 function Mens() {
@@ -76,12 +76,24 @@ function MensProduct({ item }) {
                 ) & toast.success(`${item.title} is added`)
               }
               size={30}
-              className="cursor-pointer hover:text-primary/30 s"
+              className="cursor-pointer hover:text-red-500/70"
             />
           </div>
         </div>
       </div>
       <BsFillSuitHeartFill
+        onClick={() =>
+          dispatch(
+            wishList({
+              id: item.id,
+              title: item.title,
+              image: item.image,
+              price: item.price,
+              quantity: 1,
+              description: item.description,
+            })
+          )
+        }
         size={30}
         className="absolute top-4 right-4 text-gray-400 cursor-pointer"
       />

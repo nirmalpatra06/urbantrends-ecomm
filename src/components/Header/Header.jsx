@@ -5,11 +5,12 @@ import { FaUserCircle } from "react-icons/fa";
 import { BsFillSuitHeartFill } from "react-icons/bs";
 import Logo from "../../assets/shop.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 function NavBar() {
   const [showMenu, setShowMenu] = useState(false);
   const productData = useSelector((state) => state.urbanTrends.productData);
+  const wishlistData = useSelector((state) => state.urbanTrends.wishlistData);
   // console.log(productData);
 
   function toggleShowMenu() {
@@ -36,36 +37,49 @@ function NavBar() {
           >
             <ul className="flex flex-col md:flex-row  md:items-center md:gap-6 gap-8 ">
               <li>
-                <Link className="hover:text-red-500  font-bold" to="/mens">
+                <NavLink className="hover:text-[#b53b28]  font-bold" to="/mens">
                   MENS
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link className="hover:text-red-500 font-bold" to="/womens">
+                <NavLink
+                  className="hover:text-[#b53b28] font-bold"
+                  to="/womens"
+                >
                   WOMENS
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link className="hover:text-red-500 font-bold" to="/gadgets">
+                <NavLink
+                  className="hover:text-[#b53b28] font-bold"
+                  to="/gadgets"
+                >
                   GADGETS
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link className="hover:text-red-500 font-bold" to="/jewellery">
+                <NavLink
+                  className="hover:text-[#b53b28] font-bold"
+                  to="/jewellery"
+                >
                   JEWELLERY
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
 
           <div className="flex gap-6">
-            <Link to="/wishlists">
-              <BsFillSuitHeartFill
-                size={30}
-                className="hover:text-primary cursor-pointer"
-              />
-            </Link>
-            <Link to="/cart" className="relative hover:text-primary">
+            <NavLink to="/wishlists" className="relative hover:text-red-500">
+              <BsFillSuitHeartFill size={30} className="cursor-pointer" />
+              <div
+                className={`${
+                  wishlistData.length && "bg-red-500"
+                }  absolute left-3 -bottom-2 text-[12px] w-[18px] h-[18px] text-white rounded-full flex items-center justify-center `}
+              >
+                {wishlistData.length > 0 && wishlistData.length}
+              </div>
+            </NavLink>
+            <NavLink to="/cart" className="relative hover:text-red-500">
               <BsBagCheckFill size={30} className=" cursor-pointer " />
               <div
                 className={`${
@@ -74,13 +88,14 @@ function NavBar() {
               >
                 {productData.length > 0 && productData.length}
               </div>
-            </Link>
-            <Link to="/profile">
+            </NavLink>
+            <NavLink to="/profile">
               <FaUserCircle
                 size={30}
-                className="hover:text-primary cursor-pointer"
+                className="hover:text-red-500 cursor-pointer"
               />
-            </Link>
+            </NavLink>
+            {/* Login */}
           </div>
           <div className="md:hidden">
             {showMenu ? (

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState={
+    wishlistData:[],
     productData:[],
     userInfo:null ,
 };
@@ -18,11 +19,27 @@ export const urbanSlice =createSlice({
                 state.productData.push(action.payload)
             }
         },
+        wishList:(state,action)=>{
+            const item=state.wishlistData.find((item)=>item.id ===action.payload.id)
+
+            if(item){
+                item.quantity +=action.payload.quantity
+            }
+            else{
+                state.wishlistData.push(action.payload)
+            }
+        },
         deleteItem:(state,action)=>{
             state.productData =state.productData.filter((item)=>item.id !==action.payload)
         },
+        deleteWishlistItem:(state,action)=>{
+            state.wishlistData=state.wishlistData.filter((item)=>item.id !==action.payload)
+        },
         resetCart:(state)=>{
             state.productData=[];
+        },
+        resetWishlist:(state)=>{
+            state.wishlistData=[];
         },
         increamentQty:(state,action)=>{
             const item=state.productData.find((item)=>item.id ===action.payload.id)
@@ -42,5 +59,5 @@ export const urbanSlice =createSlice({
 },
 })
 
-export const {addToCart,deleteItem,resetCart,increamentQty,decrementQty}=urbanSlice.actions;
+export const {addToCart,wishList,deleteItem,deleteWishlistItem,resetCart,resetWishlist,increamentQty,decrementQty}=urbanSlice.actions;
 export default urbanSlice.reducer;
