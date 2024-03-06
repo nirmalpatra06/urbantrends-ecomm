@@ -11,6 +11,8 @@ function NavBar() {
   const [showMenu, setShowMenu] = useState(false);
   const productData = useSelector((state) => state.urbanTrends.productData);
   const wishlistData = useSelector((state) => state.urbanTrends.wishlistData);
+  const userInfo = useSelector((state) => state.urbanTrends.userInfo);
+  console.log(userInfo);
   // console.log(productData);
 
   function toggleShowMenu() {
@@ -21,10 +23,7 @@ function NavBar() {
       <div className=" bg-primary/30 py-2">
         <div className="container flex justify-between items-center ">
           <div>
-            <Link
-              to="/"
-              className="font-bold text-2xl sm:text-3xl flex items-center"
-            >
+            <Link to="/" className="font-bold text-2xl  flex items-center">
               <img className="w-[50px]" src={Logo} alt="logo" />
               <em>Urban</em>Trends
             </Link>
@@ -35,7 +34,7 @@ function NavBar() {
             } md:static absolute md:min-h-fit md:w-auto min-h-[60vh] bg-primary md:bg-transparent   top-0 w-[70%] flex items-center pl-8 z-20 rounded-sm
              transition-all duration-300`}
           >
-            <ul className="flex flex-col md:flex-row  md:items-center md:gap-6 gap-8 ">
+            <ul className="flex flex-col md:flex-row  md:items-center md:ml-[24px] mr-[14px] md:gap-6 gap-8 ">
               <li>
                 <NavLink className="hover:text-[#b53b28]  font-bold" to="/mens">
                   MENS
@@ -68,7 +67,7 @@ function NavBar() {
             </ul>
           </div>
 
-          <div className="flex gap-6">
+          <div className="flex gap-[10px] ">
             <NavLink to="/wishlists" className="relative hover:text-red-500">
               <BsFillSuitHeartFill size={30} className="cursor-pointer" />
               <div
@@ -89,13 +88,18 @@ function NavBar() {
                 {productData.length > 0 && productData.length}
               </div>
             </NavLink>
-            <NavLink to="/profile">
-              <FaUserCircle
-                size={30}
-                className="hover:text-red-500 cursor-pointer"
-              />
+            <NavLink to="/login">
+              {userInfo ? (
+                <FaUserCircle
+                  size={30}
+                  className="hover:text-red-500 cursor-pointer"
+                />
+              ) : (
+                <h2 className="font-bold hover:text-red-500 cursor-pointer">
+                  Login
+                </h2>
+              )}
             </NavLink>
-            {/* Login */}
           </div>
           <div className="md:hidden">
             {showMenu ? (

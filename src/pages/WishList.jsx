@@ -76,7 +76,7 @@ function WishList() {
                         })
                       ) & toast.success(`${item.title} is added`)
                     }
-                    className="bg-black py-4 px-8 text-white rounded-sm"
+                    className="bg-black py-2 px-4 md:py-4 md:px-8 text-white rounded-sm"
                   >
                     Add to Cart
                   </button>
@@ -86,7 +86,7 @@ function WishList() {
                     dispatch(deleteWishlistItem(item.id)) &
                     toast.error(`${item.title} is removed from Wishlist`)
                   }
-                  size={20}
+                  size={27}
                   className=" text-gray-600 hover:text-red-600 cursor-pointer duration-300"
                 />
               </div>

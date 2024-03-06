@@ -55,9 +55,17 @@ export const urbanSlice =createSlice({
             else{
                 item.quantity--;
             }
+        },
+        /////UserInfo//////////////
+        addUser:(state,action)=>{
+            state.userInfo=action.payload;
+        },
+        removeUser:(state)=>{
+            state.userInfo=null;
         }
+        ///////////////////////////
 },
 })
 
-export const {addToCart,wishList,deleteItem,deleteWishlistItem,resetCart,resetWishlist,increamentQty,decrementQty}=urbanSlice.actions;
+export const {addToCart,wishList,deleteItem,deleteWishlistItem,resetCart,resetWishlist,increamentQty,decrementQty,addUser,removeUser}=urbanSlice.actions;
 export default urbanSlice.reducer;

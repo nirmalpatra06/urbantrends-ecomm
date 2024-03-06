@@ -22,6 +22,7 @@ import {
   RouterProvider,
   ScrollRestoration,
 } from "react-router-dom";
+import Login from "./pages/Login";
 
 const Layout = () => {
   return (
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },
