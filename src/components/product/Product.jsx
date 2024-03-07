@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import ProductCard from "../productCard/ProductCard";
 
-function Product({ products }) {
+function Product({ products, searchQuery }) {
   // console.log(products);
   return (
     <div className="mt-10 mb-12">
@@ -17,9 +18,19 @@ function Product({ products }) {
         </div>
         {/* body */}
         <div className="container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 place-items-center gap-8 mb-8">
-          {products.map((item) => (
-            <ProductCard key={item.id} item={item} />
-          ))}
+          {products
+            .filter((item) => {
+              if (searchQuery == "") {
+                return item;
+              } else if (
+                item.title.toLowerCase().includes(searchQuery.toLowerCase())
+              ) {
+                return item;
+              }
+            })
+            .map((item) => (
+              <ProductCard key={item.id} item={item} />
+            ))}
         </div>
       </div>
     </div>

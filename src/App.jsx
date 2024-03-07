@@ -23,6 +23,9 @@ import {
   ScrollRestoration,
 } from "react-router-dom";
 import Login from "./pages/Login";
+import Terms from "./pages/Terms";
+import About from "./pages/About";
+import Privacy from "./pages/Privacy";
 
 const Layout = () => {
   return (
@@ -70,7 +73,7 @@ const router = createBrowserRouter([
         loader: productsData,
       },
       {
-        path: "/wishlists",
+        path: "/wishlist",
         element: <WishList />,
       },
       {
@@ -84,6 +87,18 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/terms",
+        element: <Terms />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/privacy",
+        element: <Privacy />,
       },
     ],
   },

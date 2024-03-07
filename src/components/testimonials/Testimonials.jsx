@@ -35,7 +35,7 @@ function Testimonials() {
           </p>
         </div>
         {/* Testimonials */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 dark:text-white">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 ">
           {data.map((user) => (
             <div
               data-aos="fade-up"

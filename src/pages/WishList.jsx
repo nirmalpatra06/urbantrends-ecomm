@@ -17,7 +17,7 @@ function WishList() {
       <h2 className="text-2xl font-bold">Your Wishlist:</h2>
       {wishlistData.length === 0 ? (
         <div className="h-[50%] text-center">
-          <h1 className="m-20">It is Empty now :)</h1>
+          <h1 className="m-20">It's Empty now :)</h1>
         </div>
       ) : (
         <div className="w-full">

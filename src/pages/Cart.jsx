@@ -8,12 +8,15 @@ import {
 } from "../redux/urbanTrendsSlice";
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect, useState } from "react";
+import StripeCheckout from "react-stripe-checkout";
 
 function Cart() {
   const productData = useSelector((state) => state.urbanTrends.productData);
+  const userInfo = useSelector((state) => state.urbanTrends.userInfo);
   const dispatch = useDispatch();
   // console.log(productData);
   const [totalAmount, setTotalAmount] = useState("");
+  const [payNow, setPayNow] = useState(false);
   useEffect(() => {
     let price = 0;
     productData.map((item) => {
@@ -23,6 +26,17 @@ function Cart() {
     // console.log(price);
     setTotalAmount(price.toFixed(2));
   }, [productData]);
+
+  const HandleCheckout = () => {
+    if (userInfo) {
+      setPayNow(true);
+      if (productData.length === 0) {
+        toast.error("Please Add Some items in your cart :)");
+      }
+    } else {
+      toast.error("Please Sign in to Checkout");
+    }
+  };
   return (
     <div className="container max-w-screen-xl mx-auto py-20 flex flex-col md:flex-row">
       <div className="w-2/3 pr-10">
@@ -129,9 +143,24 @@ function Cart() {
         <p className="font-semibold flex justify-between mt-6">
           Total: <span className="font-bold text-xl">$ {totalAmount}</span>
         </p>
-        <button className="text-base bg-black text-white w-full py-3 hover:bg-gray-800 duration-300">
+        <button
+          onClick={HandleCheckout}
+          className="text-base bg-black text-white w-full py-3 hover:bg-gray-800 duration-300"
+        >
           proceed to checkout
         </button>
+        {payNow && productData.length > 0 && (
+          <div className="w-full mt-6 flex items-center justify-center">
+            <StripeCheckout
+              stripeKey="pk_test_51OrDwkSIxZiIDastYOYM4PKQCPn7n5EHt7mW3xOy8SnTpK9UbG8wac1qMMpqahvuuDs2npx7lKNnBlVjyxE2Sgsj00AuOGRuJc"
+              name="UrbanTrends"
+              amount={totalAmount * 100}
+              label="Pay Now"
+              description={`Your payment amout is 1$${totalAmount}`}
+              email={userInfo.email}
+            />
+          </div>
+        )}
       </div>
       <ToastContainer
         position="top-left"

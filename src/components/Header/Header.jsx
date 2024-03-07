@@ -68,7 +68,7 @@ function NavBar() {
           </div>
 
           <div className="flex gap-[10px] ">
-            <NavLink to="/wishlists" className="relative hover:text-red-500">
+            <NavLink to="/wishlist" className="relative hover:text-red-500">
               <BsFillSuitHeartFill size={30} className="cursor-pointer" />
               <div
                 className={`${
