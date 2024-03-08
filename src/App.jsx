@@ -9,7 +9,6 @@ import Gadgets from "./pages/Gadgets";
 import Jewellery from "./pages/Jewellery";
 import Cart from "./pages/Cart";
 import WishList from "./pages/WishList";
-import Profile from "./pages/Profile";
 import Productdetails from "./pages/Productdetails";
 
 //ProductsData
@@ -79,10 +78,6 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
-      },
-      {
-        path: "/profile",
-        element: <Profile />,
       },
       {
         path: "/login",
