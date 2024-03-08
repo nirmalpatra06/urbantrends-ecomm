@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
+import { FaArrowTurnDown } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
-import githubLogo from "../assets/githubLogo.png";
 import googleLogo from "../assets/googleLogo.png";
 import {
   getAuth,
@@ -11,10 +11,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addUser, removeUser } from "../redux/urbanTrendsSlice";
+import { useState } from "react";
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userInfo = useSelector((state) => state.urbanTrends.userInfo);
+  const [name, setName] = useState("");
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
   const handleGoogleLogin = (e) => {
@@ -39,6 +41,13 @@ function Login() {
         console.log(err);
       });
   };
+  function handleLogin() {
+    dispatch(
+      addUser({
+        name: name,
+      })
+    );
+  }
 
   const handleSignOut = () => {
     signOut(auth)
@@ -61,11 +70,11 @@ function Login() {
             <div>
               <h1>{userInfo.name}</h1>
               <div className="rounded-full w-20 h-20">
-                <img
+                {/* <img
                   className="rounded-full w-20 h-20 object-cover"
                   src={userInfo.image}
                   alt="userImg"
-                />
+                /> */}
               </div>
             </div>
           ) : (
@@ -79,16 +88,20 @@ function Login() {
                   Sign in with Google
                 </span>
               </div>
-              <div
-                onClick={() =>
-                  alert("Its not working Please Go with Google :)")
-                }
-                className="text-base w-60 h-12 tracking-wide border border-gray-400 rounded-md flex justify-center items-center gap-2 hover:border-blue-600 cursor-pointer duration-300"
-              >
-                <img className="w-8" src={githubLogo} alt="github" />
-                <span className="text-sm text-gray-900">
-                  Sign in with GitHub
-                </span>
+              <span>
+                If Sign up with Google isn't working Don't worry Try here 👇
+              </span>
+
+              <div className="h-[400px]">
+                <input
+                  type="email"
+                  placeholder="Enter Gmail here"
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <input type="password" placeholder="Enter Password" />
+                <button className="bg-red-200" onClick={handleLogin}>
+                  Go
+                </button>
               </div>
             </div>
           )}

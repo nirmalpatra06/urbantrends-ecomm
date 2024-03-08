@@ -156,7 +156,7 @@ function Cart() {
               name="UrbanTrends"
               amount={totalAmount * 100}
               label="Pay Now"
-              description={`Your payment amout is 1$${totalAmount}`}
+              description={`Your payment amout is $${totalAmount}`}
               email={userInfo.email}
             />
           </div>
