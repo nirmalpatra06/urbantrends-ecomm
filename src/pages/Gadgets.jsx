@@ -50,12 +50,14 @@ function GadgetsProduct({ item }) {
         </div>
         <div className="w-full  p-2 flex justify-between flex-col   ">
           <div>
-            <h2>{item.title.split(" ").slice(0, 10).join(" ")}</h2>
+            <h2 className="font-protestRiot">
+              {item.title.split(" ").slice(0, 10).join(" ")}
+            </h2>
           </div>
           <div className="flex items-center justify-between">
             <div>
-              <h2>$ {item.price}</h2>
-              <p>
+              <h2 className="font-protestRiot">$ {item.price}</h2>
+              <p className="font-protestRiot">
                 {item.rating.rate}/5 ({item.rating.count}) ratings
               </p>
             </div>

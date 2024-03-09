@@ -27,9 +27,11 @@ function Testimonials() {
       <div className="container">
         {/* header */}
         <div className="text-center mb-10 max-w-[600px] mx-auto">
-          <p className="text-primary">What our customers are shaying</p>
-          <h1 className="text-3xl font-bold">Testimonials</h1>
-          <p className="text-xs text-gray-400">
+          <p className="text-primary font-protestRiot">
+            What our customers are shaying
+          </p>
+          <h1 className="text-3xl font-bold font-protestRiot">Testimonials</h1>
+          <p className="text-xs text-gray-400 font-protestRiot">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique,
             doloribus.
           </p>
@@ -49,11 +51,11 @@ function Testimonials() {
                   src="https://picsum.photos/200"
                   alt="uimg"
                 />
-                <h1 className="font-bold">{user.name}</h1>
+                <h1 className="font-protestRiot">{user.name}</h1>
               </div>
               <div className="text-center">
                 <div>⭐⭐⭐⭐⭐</div>
-                <p className="font-semibold px-10 sm:px-4">
+                <p className="font-protestRiot px-10 sm:px-4">
                   {user.description}
                 </p>
               </div>

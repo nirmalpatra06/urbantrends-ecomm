@@ -26,7 +26,7 @@ function Faq() {
   return (
     <div className="container mt-10 mb-10 flex flex-col items-center justify-center ">
       <div className="bg-gray-200 w-[100vw] h-fit md:h-[700px] mt-10 mb-10 flex flex-col items-center gap-8 ">
-        <h2 className="mt-10 text-2xl">FAQS</h2>
+        <h2 className="mt-10 text-2xl font-protestRiot">FAQS</h2>
         <div className=" bg w-[70vw] md:w-[50vw] mx-auto flex flex-col mb-6 gap-2">
           {data.map((item, i) => (
             <div
@@ -37,8 +37,10 @@ function Faq() {
                 onClick={() => handleOpen(item.id)}
                 className="flex gap-2 cursor-pointer "
               >
-                <span>{i < 9 ? `0${i + 1}` : i + 1}</span>
-                <h1>{item.ques}</h1>
+                <span className="font-protestRiot">
+                  {i < 9 ? `0${i + 1}` : i + 1}
+                </span>
+                <h1 className="font-protestRiot">{item.ques}</h1>
                 <span
                   className={`text-2xl ${
                     selected === item.id &&
@@ -49,7 +51,9 @@ function Faq() {
                 </span>
               </div>
               <div className="mb-10">
-                {selected === item.id && <p>Ans: {item.ans}</p>}
+                {selected === item.id && (
+                  <p className="font-protestRiot">Ans: {item.ans}</p>
+                )}
               </div>
             </div>
           ))}

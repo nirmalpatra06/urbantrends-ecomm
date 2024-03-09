@@ -8,10 +8,12 @@ function Product({ products, searchQuery }) {
     <div className="mt-10 mb-12">
       <div className="container flex justify-center items-center flex-col">
         {/* Header */}
-        <div className="text-center mb-10 max-w-[600px] mx-auto">
-          <p className="text-sm text-primary">Top selling products for you</p>
-          <h1 className="text-3xl font-bold">Products</h1>
-          <p className="text-xs text-gray-400">
+        <div className="text-center flex  flex-col gap-2 mb-10 max-w-[600px] mx-auto">
+          <p className="text-md text-primary font-protestRiot">
+            Top selling products for you
+          </p>
+          <h1 className="text-3xl font-bold font-protestRiot">Products</h1>
+          <p className="text-xs text-gray-400 font-protestRiot">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
             possimus est, ipsam dolorum iure nihil nobis magni nostrum rem quae?
           </p>

@@ -3,7 +3,7 @@ import { BiMenuAltRight } from "react-icons/bi";
 import { BsBagCheckFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import { BsFillSuitHeartFill } from "react-icons/bs";
-import Logo from "../../assets/shop.png";
+import Logo from "../../assets/Logo2.png";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -12,7 +12,7 @@ function NavBar() {
   const productData = useSelector((state) => state.urbanTrends.productData);
   const wishlistData = useSelector((state) => state.urbanTrends.wishlistData);
   const userInfo = useSelector((state) => state.urbanTrends.userInfo);
-  console.log(userInfo);
+  // console.log(userInfo);
   // console.log(productData);
 
   function toggleShowMenu() {
@@ -20,12 +20,15 @@ function NavBar() {
   }
   return (
     <nav className="shadow-md bg-white dark:bg-gray-900 dark:text-white sticky top-0 z-40">
-      <div className=" bg-primary/30 py-2">
-        <div className="container flex justify-between items-center ">
-          <div>
+      <div className=" h-[75px] flex bg-primary/40 py-2">
+        <div className="container flex justify-between items-center overflow-hidden ">
+          <div className="w-[180px]">
             <Link to="/" className="font-bold text-2xl  flex items-center">
-              <img className="w-[50px]" src={Logo} alt="logo" />
-              <em>Urban</em>Trends
+              <img
+                className=" mix-blend-color-burn aspect-square object-contain"
+                src={Logo}
+                alt="logo"
+              />
             </Link>
           </div>
           <div
@@ -36,13 +39,16 @@ function NavBar() {
           >
             <ul className="flex flex-col md:flex-row  md:items-center md:ml-[24px] mr-[14px] md:gap-6 gap-8 ">
               <li>
-                <NavLink className="hover:text-[#b53b28]  font-bold" to="/mens">
+                <NavLink
+                  className="hover:text-[#b53b28] font-protestRiot  font-bold"
+                  to="/mens"
+                >
                   MENS
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  className="hover:text-[#b53b28] font-bold"
+                  className="hover:text-[#b53b28] font-bold font-protestRiot"
                   to="/womens"
                 >
                   WOMENS
@@ -50,7 +56,7 @@ function NavBar() {
               </li>
               <li>
                 <NavLink
-                  className="hover:text-[#b53b28] font-bold"
+                  className="hover:text-[#b53b28] font-bold font-protestRiot"
                   to="/gadgets"
                 >
                   GADGETS
@@ -58,7 +64,7 @@ function NavBar() {
               </li>
               <li>
                 <NavLink
-                  className="hover:text-[#b53b28] font-bold"
+                  className="hover:text-[#b53b28] font-bold font-protestRiot "
                   to="/jewellery"
                 >
                   JEWELLERY
@@ -95,7 +101,7 @@ function NavBar() {
                   className="hover:text-red-500 cursor-pointer"
                 />
               ) : (
-                <h2 className="font-bold hover:text-red-500 cursor-pointer">
+                <h2 className="font-bold hover:text-red-500 cursor-pointer font-protestRiot">
                   Login
                 </h2>
               )}

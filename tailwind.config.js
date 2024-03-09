@@ -18,6 +18,9 @@ export default {
           sm:"3rem"
         }
       },
+      fontFamily:{
+        protestRiot:["Protest Riot","sans-serif"]
+      }
     },
   },
   plugins: [],

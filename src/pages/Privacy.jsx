@@ -3,9 +3,9 @@ function Privacy() {
     <div className="container">
       <div className=" h-fit bg-gray-400 m-10">
         <div className="w-full flex items-center gap-4 justify-center flex-col p-10">
-          <h1 className="text-2xl">Privacy-Policy</h1>
+          <h1 className="text-2xl font-protestRiot">Privacy-Policy</h1>
           <div className="w-[200px] md:w-[700px] text-center">
-            <p>
+            <p className="font-protestRiot">
               As a passionate and skilled Frontend Developer, I bring a fresh
               perspective to the field with a solid foundation in React,
               Tailwind, and Redux. As a recent graduate, I am eager to leverage
@@ -15,13 +15,13 @@ function Privacy() {
               management through Redux, positions me as a valuable asset for any
               development team.
             </p>
-            <p>
+            <p className="font-protestRiot">
               I undertook various projects that honed my problem-solving
               abilities and refined my collaborative skills. My dedication to
               staying abreast of the latest industry trends ensures that I can
               contribute to building modern and efficient web applications.
             </p>
-            <p>
+            <p className="font-protestRiot">
               I am particularly drawn to opportunities that foster continuous
               learning and growth, as I am committed to evolving alongside the
               ever-changing landscape of frontend development. Excited about the

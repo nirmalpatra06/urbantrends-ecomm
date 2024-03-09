@@ -29,11 +29,11 @@ function Productdetails() {
           </div>
           {/* details */}
           <div className="flex-1 text-center lg:text-left">
-            <h1 className="text-2xl lg:text-3xl mb-2 max-w-[450px] mx-auto">
+            <h1 className="text-2xl lg:text-3xl mb-2 max-w-[450px] mx-auto font-protestRiot">
               {details.title}
             </h1>
             <div className="flex items-center gap-8 mb-4">
-              <h2 className="text-2xl text-red-500 font-medium ">
+              <h2 className="text-2xl text-red-500 font-medium font-protestRiot">
                 $ {details.price}
               </h2>
               <div className="flex items-center flex-col md:flex-row gap-2">
@@ -44,13 +44,13 @@ function Productdetails() {
                   <FaStar size={20} />
                   <FaStar size={20} />
                 </div>
-                <p>(4 Customers review)</p>
+                <p className="font-protestRiot">(4 Customers review)</p>
               </div>
             </div>
-            <p className="mb-8">{details.description}</p>
+            <p className="mb-8 font-protestRiot">{details.description}</p>
             <div className="flex gap-4 flex-col md:flex-row items-center">
               <div className="w-52 flex items-center justify-centery text-gray-500 gap-4 border p-3 rounded">
-                <p className="text-sm">Quantity:</p>
+                <p className="text-sm font-protestRiot">Quantity:</p>
                 <div className="flex items-center gap-4 text-sm font-semibold ">
                   <button
                     onClick={() =>
@@ -60,7 +60,7 @@ function Productdetails() {
                   >
                     -
                   </button>
-                  <span>{baseQty}</span>
+                  <span className="font-protestRiot">{baseQty}</span>
                   <button
                     onClick={() => setBaseQty(baseQty + 1)}
                     className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white duration-100 active:bg-black"
@@ -82,14 +82,16 @@ function Productdetails() {
                     })
                   ) & toast.success(`${details.title} is added`)
                 }
-                className="bg-black py-4 px-8 text-white rounded-sm"
+                className="bg-black py-4 px-8 text-white font-protestRiot rounded-sm"
               >
                 Add to Cart
               </button>
             </div>
-            <p className="text-base text-gray-500 mt-4">
+            <p className="text-base text-gray-500 mt-4 font-protestRiot">
               Category:{" "}
-              <span className="font-medium capitalize">{details.category}</span>
+              <span className="font-medium capitalize font-protestRiot">
+                {details.category}
+              </span>
             </p>
           </div>
         </div>
