@@ -11,8 +11,9 @@ https://urbantrends-ecomm.vercel.app/
 
 ## Screenshots
 
-
-
+![UrbanTrends - Google Chrome 3_10_2024 9_43_51 AM](https://github.com/nirmalpatra06/urbantrends-ecomm/assets/134248927/8a733680-d138-4365-a0f3-2e22abea41a9)
+![UrbanTrends - Google Chrome 3_18_2024 5_47_58 PM](https://github.com/nirmalpatra06/urbantrends-ecomm/assets/134248927/52484bdb-85a0-44d6-86b8-413f4cf103e4)
+![UrbanTrends - Google Chrome 3_18_2024 5_48_25 PM](https://github.com/nirmalpatra06/urbantrends-ecomm/assets/134248927/eda4413d-8137-45ab-a8ea-cf0d13934100)
 
 ## Features
 
