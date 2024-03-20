@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { FaCaretDown } from "react-icons/fa";
 const data = [
   {
     id: 1,
@@ -37,18 +37,19 @@ function Faq() {
                 onClick={() => handleOpen(item.id)}
                 className="flex gap-2 cursor-pointer "
               >
-                <span className="font-protestRiot">
-                  {i < 9 ? `0${i + 1}` : i + 1}
-                </span>
-                <h1 className="font-protestRiot">{item.ques}</h1>
-                <span
-                  className={`text-2xl ${
-                    selected === item.id &&
-                    "rotate-45 transition-transform duration-300"
-                  }`}
-                >
-                  +
-                </span>
+                <div className="flex gap-2 items-start">
+                  <span className="font-protestRiot">
+                    {i < 9 ? `0${i + 1}` : i + 1}
+                  </span>
+                  <h1 className="font-protestRiot">{item.ques}</h1>
+                  <FaCaretDown
+                    size={50}
+                    className={`text-2xl ${
+                      selected === item.id &&
+                      "rotate-180 transition-transform duration-300"
+                    }`}
+                  />
+                </div>
               </div>
               <div className="mb-10">
                 {selected === item.id && (
