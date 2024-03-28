@@ -39,7 +39,7 @@ function Cart() {
   };
   return (
     <div className="container max-w-screen-xl mx-auto py-20 flex flex-col md:flex-row">
-      <div className="w-2/3 pr-10 flex flex-col mx-auto ">
+      <div className="w-2/3 pr-10 flex items-center p-2 flex-col mx-auto ">
         <div className="w-full">
           <h2 className="font-medium text-2xl font-protestRiot">
             Shopping cart
@@ -51,17 +51,19 @@ function Cart() {
               key={item.id}
               className="w-full flex items-center justify-between gap-20 mt-6"
             >
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4 shadow-lg rounded-md ">
-                <div className="h-full  cursor-pointer flex items-center justify-center  ">
+              <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 shadow-lg rounded-md ">
+                <div className="h-full  cursor-pointer flex flex-col md:flex-row items-center justify-center  ">
                   <img
-                    className="object-fit mix-blend-color-burn p-2 w-[600px] md:w-[250px]  max-h-[230px] px-6 "
+                    className="object-fit mix-blend-color-burn p-2 w-[150px]  px-6 "
                     src={item.image}
                     alt="productImg"
                   />
+                  <div>
+                    <h2 className="font-protestRiot">{item.title}</h2>
+                    <p className="font-protestRiot">$ {item.price}</p>
+                  </div>
                 </div>
                 <div className="w-[200px] flex flex-col items-center justify-center gap-4">
-                  <h2 className="font-protestRiot">{item.title}</h2>
-                  <p className="font-protestRiot">$ {item.price}</p>
                   <div className="w-[200px] flex items-center justify-centery text-gray-500 gap-4 border p-3 rounded">
                     <p className="text-sm font-protestRiot">Quantity:</p>
                     <div className="flex items-center gap-4 text-sm font-semibold ">

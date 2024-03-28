@@ -24,20 +24,24 @@ function WishList() {
           {wishlistData.map((item) => (
             <div
               key={item.id}
-              className="w-full flex items-center justify-between md:justify-center gap-20 mt-6"
+              className="w-full flex items-center justify-between md:justify-center  mt-6  rounded-sm shadow-md border-gray-400 p-2"
             >
-              <div className="flex  flex-row items-center justify-between  gap-6">
-                <div className="flex flex-col md:flex-row">
+              <div className="flex w-full  flex-row items-center justify-between  gap-6">
+                <div className="flex items-center flex-row">
                   <div className="h-full  cursor-pointer flex items-center justify-center  ">
                     <img
-                      className="object-cover max-h-[200px] px-6 "
+                      className="w-[300px] md:w-[150px] object-fit mix-blend-color-burn max-h-[200px] px-6 "
                       src={item.image}
                       alt="productImg"
                     />
                   </div>
-                  <div className="w-[250px] flex flex-col  items-center justify-center gap-4">
-                    <h2 className="font-protestRiot">{item.title}</h2>
-                    <p className="font-protestRiot">$ {item.price}</p>
+                  <div className=" w-[200px] md:w-[250px] flex flex-col  items-center justify-center gap-4">
+                    <div>
+                      <h2 className="font-protestRiot text-xs md:text-[16px]">
+                        {item.title}
+                      </h2>
+                      <p className="font-protestRiot">$ {item.price}</p>
+                    </div>
                     <div className="w-52 flex items-center justify-centery text-gray-500 gap-4 border p-3 rounded">
                       <p className="text-sm font-protestRiot">Quantity:</p>
                       <div className="flex items-center gap-4 text-sm font-semibold ">
@@ -61,10 +65,9 @@ function WishList() {
                         </button>
                       </div>
                     </div>
-                    <p className="font-protestRiot">$ {baseQty * item.price}</p>
                   </div>
                 </div>
-                <div className="flex flex-col md:flex-row gap-6">
+                <div className="flex items-center flex-col md:flex-row gap-6">
                   <div>
                     <button
                       onClick={() =>
@@ -79,7 +82,7 @@ function WishList() {
                           })
                         ) & toast.success(`${item.title} is added`)
                       }
-                      className="bg-black py-2 font-protestRiot px-4 md:py-4 md:px-8 text-white rounded-sm"
+                      className="bg-black  font-protestRiot  md:py-4 md:px-8 text-white rounded-sm"
                     >
                       Add to Cart
                     </button>
